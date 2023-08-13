@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { createPortal } from "react-dom";
 import { cloneElement, createContext, useContext } from "react";
 import { useState } from "react";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -61,7 +62,7 @@ function Modal({children}) {
   const close = () => setOpenName("");
   const open = setOpenName;
 
-  return <ModalContext.Provider value={{openName, close, open }}>{children}</ModalContext.Provider>
+  return <ModalContext.Provider value={{ openName, close, open }}>{children}</ModalContext.Provider>
 }
 
 
@@ -76,13 +77,16 @@ function Open({children, opens: opensWindowName }) {
 
 const Window = ({children, name }) => {
 
-  const { openName, close } = useContext(Modal)
+  const { openName, close } = useContext(ModalContext)
 
+  const ref = useOutsideClick(close)
+
+  
   if(name !== openName ) return null;
 
   return createPortal(
     <Overlay>
-      <StyledModal>
+      <StyledModal ref={ref}>
 
       <Button onClick={close}>
         <HiXMark/>
@@ -99,7 +103,7 @@ const Window = ({children, name }) => {
 Modal.Open = Open;
 Modal.Window = Window;
 
-export default Window;
+export default Modal;
 
 
 
