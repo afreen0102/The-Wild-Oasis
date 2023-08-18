@@ -30,7 +30,8 @@ function BookingDetail() {
 
   return (
     <>
-      <Row type="horizontal">
+    <h1>hello world</h1>
+      {/* <Row type="horizontal">
         <HeadingGroup>
           <Heading as="h1">Booking #X</Heading>
           <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
@@ -44,7 +45,7 @@ function BookingDetail() {
         <Button variation="secondary" onClick={moveBack}>
           Back
         </Button>
-      </ButtonGroup>
+      </ButtonGroup> */}
     </>
   );
 }
