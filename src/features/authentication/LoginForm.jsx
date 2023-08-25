@@ -30,6 +30,7 @@ function LoginForm() {
   return (
     <Form onSubmit={handleSubmit}>
       <FormRowVertical label="Email address">
+
         <Input
           type="email"
           id="email"
@@ -39,8 +40,11 @@ function LoginForm() {
           onChange={(e) => setEmail(e.target.value)}
           disabled={isLoading}
         />
+
       </FormRowVertical>
+
       <FormRowVertical label="Password">
+
         <Input
           type="password"
           id="password"
@@ -49,11 +53,14 @@ function LoginForm() {
           onChange={(e) => setPassword(e.target.value)}
           disabled={isLoading}
         />
+
       </FormRowVertical>
+
       <FormRowVertical>
         <Button size="large"
         disabled={isLoading}>{!isLoading ? 'Log in' : <SpinnerMini/>}</Button>
       </FormRowVertical>
+      
     </Form>
   );
 }
